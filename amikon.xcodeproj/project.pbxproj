@@ -13,6 +13,9 @@
 		117395872D97325C009005EB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 117395862D97325C009005EB /* Base */; };
 		117395892D97325E009005EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 117395882D97325E009005EB /* Assets.xcassets */; };
 		1173958C2D97325E009005EB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1173958B2D97325E009005EB /* Base */; };
+		117395962D973287009005EB /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 117395942D973287009005EB /* server.cpp */; };
+		117395992D9732B5009005EB /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 117395972D9732B5009005EB /* client.cpp */; };
+		1173959C2D9732D2009005EB /* logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1173959A2D9732D2009005EB /* logger.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +27,13 @@
 		117395882D97325E009005EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1173958B2D97325E009005EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1173958D2D97325E009005EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		117395932D973287009005EB /* amikon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "amikon-Bridging-Header.h"; sourceTree = "<group>"; };
+		117395942D973287009005EB /* server.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = server.cpp; sourceTree = "<group>"; };
+		117395952D973287009005EB /* server.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = server.hpp; sourceTree = "<group>"; };
+		117395972D9732B5009005EB /* client.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = client.cpp; sourceTree = "<group>"; };
+		117395982D9732B5009005EB /* client.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = client.hpp; sourceTree = "<group>"; };
+		1173959A2D9732D2009005EB /* logger.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = logger.cpp; sourceTree = "<group>"; };
+		1173959B2D9732D2009005EB /* logger.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = logger.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,8 +50,15 @@
 		117395732D97325C009005EB = {
 			isa = PBXGroup;
 			children = (
+				117395942D973287009005EB /* server.cpp */,
+				117395972D9732B5009005EB /* client.cpp */,
+				1173959A2D9732D2009005EB /* logger.cpp */,
+				1173959B2D9732D2009005EB /* logger.hpp */,
+				117395982D9732B5009005EB /* client.hpp */,
+				117395952D973287009005EB /* server.hpp */,
 				1173957E2D97325C009005EB /* amikon */,
 				1173957D2D97325C009005EB /* Products */,
+				117395932D973287009005EB /* amikon-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +116,7 @@
 				TargetAttributes = {
 					1173957B2D97325C009005EB = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 					};
 				};
 			};
@@ -140,7 +158,10 @@
 			files = (
 				117395842D97325C009005EB /* ViewController.swift in Sources */,
 				117395802D97325C009005EB /* AppDelegate.swift in Sources */,
+				117395962D973287009005EB /* server.cpp in Sources */,
+				1173959C2D9732D2009005EB /* logger.cpp in Sources */,
 				117395822D97325C009005EB /* SceneDelegate.swift in Sources */,
+				117395992D9732B5009005EB /* client.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,6 +311,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 45KC6823ML;
@@ -308,6 +330,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaska.amikon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "amikon-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -318,6 +342,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 45KC6823ML;
@@ -336,6 +361,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaska.amikon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "amikon-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

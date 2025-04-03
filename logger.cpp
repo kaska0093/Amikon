@@ -13,27 +13,29 @@
 #include <fcntl.h>
 #include <unistd.h>
 
-
 #define SHM_NAME "/monitor_log"
+
+using namespace std;
 
 int main(int argc, char* argv[]) {
     if (argc != 2) {
-        std::cerr << "Usage: " << argv[0] << " <output_file>" << std::endl;
+        cerr << "Usage: " << argv[0] << " <output_file>" << endl;
         return 1;
     }
 
     int fd = shm_open(SHM_NAME, O_RDONLY, 0666);
     if (fd == -1) {
-        std::cerr << "Error: cannot access shared memory" << std::endl;
+        cerr << "Error: cannot access shared memory" << endl;
         return 1;
     }
 
     LogEntry* log = (LogEntry*)mmap(0, sizeof(LogEntry) * 100, PROT_READ, MAP_SHARED, fd, 0);
     if (log == MAP_FAILED) return 1;
 
-    std::ofstream outFile(argv[1]);
+    ofstream outFile(argv[1]);
+    
     for (int i = 0; i < 100; i++) {
-        outFile << log[i].entry << std::endl;
+        outFile << log[i].entry << endl;
     }
 
     outFile.close();

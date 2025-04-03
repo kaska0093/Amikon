@@ -7,27 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		117395802D97325C009005EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1173957F2D97325C009005EB /* AppDelegate.swift */; };
-		117395822D97325C009005EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117395812D97325C009005EB /* SceneDelegate.swift */; };
-		117395842D97325C009005EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117395832D97325C009005EB /* ViewController.swift */; };
-		117395872D97325C009005EB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 117395862D97325C009005EB /* Base */; };
-		117395892D97325E009005EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 117395882D97325E009005EB /* Assets.xcassets */; };
-		1173958C2D97325E009005EB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 1173958B2D97325E009005EB /* Base */; };
 		117395962D973287009005EB /* server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 117395942D973287009005EB /* server.cpp */; };
 		117395992D9732B5009005EB /* client.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 117395972D9732B5009005EB /* client.cpp */; };
 		1173959C2D9732D2009005EB /* logger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1173959A2D9732D2009005EB /* logger.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1173957C2D97325C009005EB /* amikon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = amikon.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1173957F2D97325C009005EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		117395812D97325C009005EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		117395832D97325C009005EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		117395862D97325C009005EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		117395882D97325E009005EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		1173958B2D97325E009005EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		1173958D2D97325E009005EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		117395932D973287009005EB /* amikon-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "amikon-Bridging-Header.h"; sourceTree = "<group>"; };
+		1173957C2D97325C009005EB /* amikon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = amikon.app; path = "/Users/nikita/Desktop/amikon/build/Debug-iphoneos/amikon.app"; sourceTree = "<absolute>"; };
 		117395942D973287009005EB /* server.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = server.cpp; sourceTree = "<group>"; };
 		117395952D973287009005EB /* server.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = server.hpp; sourceTree = "<group>"; };
 		117395972D9732B5009005EB /* client.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = client.cpp; sourceTree = "<group>"; };
@@ -56,32 +42,7 @@
 				1173959B2D9732D2009005EB /* logger.hpp */,
 				117395982D9732B5009005EB /* client.hpp */,
 				117395952D973287009005EB /* server.hpp */,
-				1173957E2D97325C009005EB /* amikon */,
-				1173957D2D97325C009005EB /* Products */,
-				117395932D973287009005EB /* amikon-Bridging-Header.h */,
 			);
-			sourceTree = "<group>";
-		};
-		1173957D2D97325C009005EB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1173957C2D97325C009005EB /* amikon.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		1173957E2D97325C009005EB /* amikon */ = {
-			isa = PBXGroup;
-			children = (
-				1173957F2D97325C009005EB /* AppDelegate.swift */,
-				117395812D97325C009005EB /* SceneDelegate.swift */,
-				117395832D97325C009005EB /* ViewController.swift */,
-				117395852D97325C009005EB /* Main.storyboard */,
-				117395882D97325E009005EB /* Assets.xcassets */,
-				1173958A2D97325E009005EB /* LaunchScreen.storyboard */,
-				1173958D2D97325E009005EB /* Info.plist */,
-			);
-			path = amikon;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,7 +90,7 @@
 				Base,
 			);
 			mainGroup = 117395732D97325C009005EB;
-			productRefGroup = 1173957D2D97325C009005EB /* Products */;
+			productRefGroup = 117395732D97325C009005EB;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -143,9 +104,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				117395892D97325E009005EB /* Assets.xcassets in Resources */,
-				1173958C2D97325E009005EB /* Base in Resources */,
-				117395872D97325C009005EB /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,35 +114,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				117395842D97325C009005EB /* ViewController.swift in Sources */,
-				117395802D97325C009005EB /* AppDelegate.swift in Sources */,
 				117395962D973287009005EB /* server.cpp in Sources */,
 				1173959C2D9732D2009005EB /* logger.cpp in Sources */,
-				117395822D97325C009005EB /* SceneDelegate.swift in Sources */,
 				117395992D9732B5009005EB /* client.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		117395852D97325C009005EB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				117395862D97325C009005EB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1173958A2D97325E009005EB /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1173958B2D97325E009005EB /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1173958E2D97325E009005EB /* Debug */ = {

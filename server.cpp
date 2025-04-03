@@ -15,16 +15,28 @@
 #include <fcntl.h>
 #include <cstring>
 #include <sys/wait.h>
-#include <csignal>
+//#include <csignal>
 #include <sstream>
+
+#include <signal.h>
+#include <sys/sysctl.h>
+#include <mach/mach.h>
 
 #define PORT_BASE 8080
 #define WORKER_COUNT 5
 #define SHM_NAME "/monitor_log"
 
+using namespace std;
 
+// Функция проверки существования процесса
+bool processExists(int pid) {
+    if (kill(pid, 0) == 0) {
+        return true;  // Процесс существует
+    }
+    return false;  // Процесса нет
+}
 
-void logToSharedMemory(const std::string& message) {
+void logToSharedMemory(const string& message) {
     int fd = shm_open(SHM_NAME, O_CREAT | O_RDWR, 0666);
     if (fd == -1) return;
     ftruncate(fd, sizeof(LogEntry) * 100);
@@ -59,26 +71,34 @@ void workerProcess(int port) {
         buffer[63] = '\0';
 
         int pid = atoi(buffer);
-        std::ostringstream logEntry;
+        ostringstream logEntry;
 
         if (pid > 0) {
-            std::ostringstream cmd;
-            cmd << "ps -p " << pid << " -o %cpu | tail -1";
-            FILE* pipe = popen(cmd.str().c_str(), "r");
-
-            if (!pipe) {
-                logEntry << "Error executing command";
+            if (!processExists(pid)) {
+                sendto(sock, "Not found PID", 7, 0, (struct sockaddr*)&clientAddr, clientLen);
+                logEntry << "not found";
+                
             } else {
-                char cpuUsage[16];
-                fgets(cpuUsage, sizeof(cpuUsage), pipe);
-                pclose(pipe);
+                ostringstream cmd;
+                cmd << "ps -p " << pid << " -o %cpu | tail -1";
+                FILE* pipe = popen(cmd.str().c_str(), "r");
 
-                std::string response = cpuUsage;
-                response.erase(response.find_last_not_of(" \n\r\t") + 1);
-                sendto(sock, response.c_str(), response.size(), 0, (struct sockaddr*)&clientAddr, clientLen);
+                if (!pipe) {
+                    logEntry << "Error executing command";
+                } else {
+                    char cpuUsage[16];
+                    fgets(cpuUsage, sizeof(cpuUsage), pipe);
+                    pclose(pipe);
 
-                logEntry << "PID " << pid << " CPU " << response;
+                    string response = cpuUsage;
+                    response.erase(response.find_last_not_of(" \n\r\t") + 1);
+                    sendto(sock, response.c_str(), response.size(), 0, (struct sockaddr*)&clientAddr, clientLen);
+
+                    logEntry << "PID " << pid << " CPU " << response;
+                }
+                
             }
+
         } else {
             sendto(sock, "invalid", 7, 0, (struct sockaddr*)&clientAddr, clientLen);
             logEntry << "invalid request";

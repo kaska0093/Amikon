@@ -14,28 +14,29 @@
 #include <cstring>
 #include <arpa/inet.h>
 
+using namespace std;
 
-void sendRequest(const std::string& ip, int port, int pid) {
+void sendRequest(const string& ip, int port, int pid) {
     int sock = socket(AF_INET, SOCK_DGRAM, 0);
     sockaddr_in addr{};
     addr.sin_family = AF_INET;
     addr.sin_port = htons(port);
     inet_pton(AF_INET, ip.c_str(), &addr.sin_addr);
 
-    std::string request = std::to_string(pid);
+    string request = to_string(pid);
     sendto(sock, request.c_str(), request.size(), 0, (struct sockaddr*)&addr, sizeof(addr));
 
     char buffer[64];
     recv(sock, buffer, sizeof(buffer), 0);
     buffer[63] = '\0';
 
-    std::cout << "Response: " << buffer << std::endl;
+    cout << "Response: " << buffer << endl;
     close(sock);
 }
 
 int main(int argc, char* argv[]) {
     if (argc != 4) {
-        std::cerr << "Usage: " << argv[0] << " <server_ip> <port> <pid>" << std::endl;
+        cerr << "Usage: " << argv[0] << " <server_ip> <port> <pid>" << endl;
         return 1;
     }
 
